@@ -5,6 +5,7 @@ import { getRandomItem, score } from './utils.js';
 const spots = ['tree', 'boulder', 'shed'];
 let total = 0;
 let wins = 0;
+let losses = 0;
 let spot = '';
 let guessed = '';
 let timeout = 0;
@@ -12,8 +13,15 @@ let timeout = 0;
 function handleGuess(guess) {
     // *** Implement Missing Functionality ***
     // Generate a random spot based on spots array
+    spot = getRandomItem(spots);
+
     // Use the score function to get a result for guess and actual spot
+    if (spot === guess) wins += 1;
+    else losses += 1;
+    total += 1;
     // (You also need to implement the score function)
+
+    spot = score(guess, spot);
     // If the result is 1 (win), increase wins state
     // Increase total state 
     // ***
@@ -68,7 +76,7 @@ function displayHidingSpots() {
     if (guessed === 'boulder') {
         boulderButton.classList.add('guessed');
     }
-        console.log(guessed);
+    console.log(guessed);
 
     // add the 'guessed' class if the guessed state
     // matches for tree, shed, or boulder
@@ -98,6 +106,7 @@ shedButton.addEventListener('click', () => {
 
 // *** Implement the Results Component! ***
 // 1. Reference needed DOM elements
+
 // 2. Implement the displayResults function that updates
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
