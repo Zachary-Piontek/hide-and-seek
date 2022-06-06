@@ -1,5 +1,5 @@
 // import needed modules
-import { getRandomItem, score } from './utils.js';
+import { getRandomItem } from './utils.js';
 
 // state
 const spots = ['tree', 'boulder', 'shed'];
@@ -14,14 +14,13 @@ function handleGuess(guess) {
     // *** Implement Missing Functionality ***
     // Generate a random spot based on spots array
     spot = getRandomItem(spots);
-
+    
     // Use the score function to get a result for guess and actual spot
     if (spot === guess) wins += 1;
     else losses += 1;
     total += 1;
-    // (You also need to implement the score function)
-
-    spot = score(guess, spot);
+    // If the result is 1 (win), increase wins state
+    
     // If the result is 1 (win), increase wins state
     // Increase total state 
     // ***
@@ -76,7 +75,6 @@ function displayHidingSpots() {
     if (guessed === 'boulder') {
         boulderButton.classList.add('guessed');
     }
-    console.log(guessed);
 
     // add the 'guessed' class if the guessed state
     // matches for tree, shed, or boulder
