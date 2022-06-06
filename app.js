@@ -107,12 +107,20 @@ shedButton.addEventListener('click', () => {
 // *** Implement the Results Component! ***
 // 1. Reference needed DOM elements
 
+const winsDisplay = document.getElementById('wins-display');
+const lossesDisplay = document.getElementById('losses-display');
+const totalDisplay = document. getElementById('total-display');
+
 // 2. Implement the displayResults function that updates
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
 // ***
 function displayResults() {
-
+    if (guessed) {
+        winsDisplay.textContent = wins;
+        lossesDisplay.textContent = losses;
+        totalDisplay.textContent = total;
+    }
 }
 
 
