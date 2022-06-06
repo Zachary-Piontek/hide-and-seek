@@ -57,7 +57,19 @@ function displayHidingSpots() {
     }
 
     // *** Implement adding the guessed ***
+
     // Similar to adding face class, conditionally
+    if (guessed === 'tree') {
+        treeButton.classList.add('guessed');
+    }
+    if (guessed === 'shed') {
+        shedButton.classList.add('guessed');
+    }
+    if (guessed === 'boulder') {
+        boulderButton.classList.add('guessed');
+    }
+        console.log(guessed);
+
     // add the 'guessed' class if the guessed state
     // matches for tree, shed, or boulder
     // ***
