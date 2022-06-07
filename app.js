@@ -1,10 +1,11 @@
 // import needed modules
-import { getRandomItem, score } from './utils.js';
+import { getRandomItem } from './utils.js';
 
 // state
 const spots = ['tree', 'boulder', 'shed'];
 let total = 0;
 let wins = 0;
+let losses = 0;
 let spot = '';
 let guessed = '';
 let timeout = 0;
@@ -12,8 +13,14 @@ let timeout = 0;
 function handleGuess(guess) {
     // *** Implement Missing Functionality ***
     // Generate a random spot based on spots array
+    spot = getRandomItem(spots);
+    
     // Use the score function to get a result for guess and actual spot
-    // (You also need to implement the score function)
+    if (spot === guess) wins += 1;
+    else losses += 1;
+    total += 1;
+    // If the result is 1 (win), increase wins state
+    
     // If the result is 1 (win), increase wins state
     // Increase total state 
     // ***
@@ -57,7 +64,18 @@ function displayHidingSpots() {
     }
 
     // *** Implement adding the guessed ***
+
     // Similar to adding face class, conditionally
+    if (guessed === 'tree') {
+        treeButton.classList.add('guessed');
+    }
+    if (guessed === 'shed') {
+        shedButton.classList.add('guessed');
+    }
+    if (guessed === 'boulder') {
+        boulderButton.classList.add('guessed');
+    }
+
     // add the 'guessed' class if the guessed state
     // matches for tree, shed, or boulder
     // ***
@@ -86,12 +104,21 @@ shedButton.addEventListener('click', () => {
 
 // *** Implement the Results Component! ***
 // 1. Reference needed DOM elements
+
+const winsDisplay = document.getElementById('wins-display');
+const lossesDisplay = document.getElementById('losses-display');
+const totalDisplay = document. getElementById('total-display');
+
 // 2. Implement the displayResults function that updates
 //    the component total, winds, and losses
 //    (derive losses from totals and wins)
 // ***
 function displayResults() {
-
+    if (guessed) {
+        winsDisplay.textContent = wins;
+        lossesDisplay.textContent = losses;
+        totalDisplay.textContent = total;
+    }
 }
 
 
